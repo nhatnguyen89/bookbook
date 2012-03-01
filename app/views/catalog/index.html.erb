@@ -1,0 +1,9 @@
+<dl id="books">
+  <p><%= link_to "Search", :action => "search" %></p>
+  <%= render :partial => "search_box" %><br/>
+  <% @books.each do |book| %>
+      <%= link_to book.title, book %>
+      <dd><%= pluralize(book.page_count, "page") %></dd>
+      <dd><small>Publisher: <%= book.publisher_id %></small></dd>
+  <% end %>
+</dl>

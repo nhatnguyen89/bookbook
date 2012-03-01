@@ -1,0 +1,47 @@
+<%= form_for(@book) do |f| %>
+  <% if @book.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>
+
+      <ul>
+      <% @book.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+
+  <p><label for="book_publisher">Publisher</label><br/>
+<%= collection_select :book, :publisher_id, @publishers, :id, :publisher %></p>
+<p><label for="book[author_ids][]">Authors</label><br/>
+
+<%= select_tag 'book[author_ids][]',
+      options_from_collection_for_select(@authors, :id, :name,@book.authors.collect{|author| author.id}),
+        { :multiple => true, :size => 5 }
+%>
+</p>
+  <div class="field">
+    <%= f.label :published_at %><br />
+    <%= f.datetime_select :published_at %>
+  </div>
+  <div class="field">
+    <%= f.label :isbn %><br />
+    <%= f.text_field :isbn %>
+  </div>
+  <div class="field">
+    <%= f.label :blurb %><br />
+    <%= f.text_area :blurb %>
+  </div>
+  <div class="field">
+    <%= f.label :page_count %><br />
+    <%= f.number_field :page_count %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

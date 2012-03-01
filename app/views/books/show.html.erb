@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @book.title %>
+</p>
+
+<p>
+  <b>Publisher</b>
+  <%= @book.publisher.publisher %>
+</p>
+
+<p>
+  <b>Published at:</b>
+  <%= @book.published_at %>
+</p>
+<b>Authors</b>
+  <dd><%= @book.authors.collect{|author| author.name }.join(', ') %></dd>
+<p>
+  <b>Isbn:</b>
+  <%= @book.isbn %>
+</p>
+
+<p>
+  <b>Blurb:</b>
+  <%= @book.blurb %>
+</p>
+
+<p>
+  <b>Page count:</b>
+  <%= @book.page_count %>
+</p>
+
+
+<%= link_to 'Edit', edit_book_path(@book) %> |
+<%= link_to 'Back', books_path %>

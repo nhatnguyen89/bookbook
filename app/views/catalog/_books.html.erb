@@ -1,0 +1,7 @@
+<dl id="books">
+  <% for book in @books %>
+    <dt><%= link_to book.title.t, :action => "show", :id => book %></dt>
+      <dd><%= pluralize(book.page_count, "page") %></dd>
+      <dd><small>Publisher: <%= book.publisher %></small></dd>
+  <% end %>
+</dl>
